@@ -1,3 +1,4 @@
+import { OrbitControls } from 'three/examples/jsm/Addons.js'
 import './style.css'
 
 import * as THREE from 'three'
@@ -32,6 +33,12 @@ pointLight.position.set(20, 20, 20)
 const ambientLight = new THREE.AmbientLight(0xffffff)
 scene.add(pointLight, ambientLight)
 
+const lightHelper = new THREE.PointLightHelper(pointLight)
+const gridHelper = new THREE.GridHelper(200, 50)
+scene.add(lightHelper, gridHelper)
+
+const controls = new OrbitControls(camera, renderer.domElement)
+
 const animate = () => {
     requestAnimationFrame(animate)
 
@@ -39,6 +46,8 @@ const animate = () => {
     torus.rotation.y += 0.005
     torus.rotation.z += 0.005
     
+    controls.update()
+
     renderer.render(scene, camera)
 }
 
