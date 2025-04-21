@@ -3,3 +3,18 @@ canvas {
     top: 0;
     left: 0;
 }
+
+main {
+    position: absolute;
+
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+}
+
+header {
+    grid-column: 2 / span 5;
+}
+
+section {
+    grid-column: 2 / 8;
+}
